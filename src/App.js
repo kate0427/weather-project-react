@@ -1,45 +1,66 @@
+import React, { useState } from "react";
+import axios from "axios";
 import "./App.css";
-// import axios from "axios";
 
 function App() {
-  let weatherData = {
-    date: "Sat, September 5",
-    time: "16:48",
-    city: "Kyiv",
-    description: "partly cloudy",
-    humidity: "80",
-    wind: "2",
-    temperature: 19,
-    feelsLikeTemperature: 20,
-    imgUrl:
-      "https://unblast.com/wp-content/uploads/2020/05/Weather-Vector-Icons.jpg",
-  };
-  //   function showWeather(response) {
-  //     let temp = response.data.main.temp;
-  //     alert(`The temperature in Kyiv is ${temp}`);
-  //   }
+  const [city, setCity] = useState("");
+  const [weather, setWeather] = useState({});
 
-  //   let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=kyiv&appid=e80f735c22f9cc78cdfe65b74bebba0a&units=metric`;
-  //   axios.get(apiURL).then(showWeather);
+  function showWeather(response) {
+    setWeather({
+      cityName: response.data.name,
+      temperature: response.data.main.temp,
+      feelsLikeTemperature: response.data.main.feels_like,
+      wind: response.data.wind.speed,
+      humidity: response.data.main.humidity,
+      description: response.data.weather[0].description,
+      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+    });
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e80f735c22f9cc78cdfe65b74bebba0a&units=metric`;
+    axios.get(apiURL).then(showWeather);
+  }
+
+  function getCity(event) {
+    setCity(event.target.value);
+  }
+
+  function getPosition(position) {
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
+    let apiLink = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=e80f735c22f9cc78cdfe65b74bebba0a&units=metric`;
+    axios.get(apiLink).then(showWeather);
+  }
+
+  function getLocation(event) {
+    event.preventDefault();
+    navigator.geolocation.getCurrentPosition(getPosition);
+  }
 
   return (
     <div className="Weather">
       <div className="container" styles="width: 80%">
         <div className="row">
           <div className="col">
-            <form className="searchform">
+            <form className="searchform" onSubmit={handleSubmit}>
               <input
                 className="searchbar"
                 type="search"
                 placeholder="Type the city"
+                onChange={getCity}
               />
               <input type="submit" className="searchbutton" value="Search" />
             </form>
-            <button className="currentButton">Current location</button>
+            <button className="currentButton" onClick={getLocation}>
+              Current location
+            </button>
           </div>
           <div className="col text-center dateTime">
-            <h2 className="date">{weatherData.date}</h2>
-            <h3 className="time">{weatherData.time}</h3>
+            <h2 className="date">12/7</h2>
+            <h3 className="time">15:00</h3>
           </div>
         </div>
       </div>
@@ -47,28 +68,31 @@ function App() {
         <div className="card-body">
           <div className="row">
             <div className="col-md-4">
-              <h1 className="card-title currentCity">{weatherData.city}</h1>
+              <h1 className="card-title currentCity">{weather.cityName}</h1>
               <p className="card-text weatherDetails">
-                Humidity:<span> {weatherData.humidity}%</span>
+                Humidity:<span> {weather.humidity}%</span>
                 <br />
-                Wind:<span> {weatherData.wind} km/h</span>
+                Wind:<span> {weather.wind} km/h</span>
               </p>
             </div>
             <div className="col-md-4 text-center">
               <img
-                src="https://unblast.com/wp-content/uploads/2020/05/Weather-Vector-Icons.jpg"
+                src={weather.icon}
                 className="mainWeatherImg"
-                alt={weatherData.description}
+                alt={weather.description}
               />
-              <p className="skyDescription">{weatherData.description}</p>
+              <p className="skyDescription">{weather.description}</p>
             </div>
             <div className="col-md-4 text-center">
               <p className="temperature">
-                <span className="tempFigure">{weatherData.temperature}</span>℃ |{" "}
-                <span className="...">℉</span>
+                <span className="tempFigure">
+                  {Math.round(weather.temperature)}
+                </span>
+                ℃ | <span className="...">℉</span>
               </p>
               <p className="feelsLikeTemperature">
-                *feels like: <span>{weatherData.feelsLikeTemperature}</span>
+                *feels like:{" "}
+                <span>{Math.round(weather.feelsLikeTemperature)}</span>
                 <span>℃ |</span>
                 <span> ℉</span>
               </p>
@@ -81,12 +105,7 @@ function App() {
           <div className="row">
             <div className="col-md-4">
               <div className="daysWeatherDate">Mon</div>
-              <img
-                className="daysImg"
-                alt="..."
-                src={weatherData.imgUrl}
-                id="..."
-              />
+              <img className="daysImg" alt="..." src="..." id="..." />
               <p className="daysTemperature">
                 <span className="daysTempMax">12 | </span>
                 <span className="daysTempMin">12</span>
@@ -104,7 +123,7 @@ function App() {
       </div>
       <footer className="myLink">
         <a
-          href="https://github.com/kate0427/my-weather-project"
+          href="https://github.com/kate0427/weather-react"
           target="_blank"
           rel="noopener noreferrer"
         >

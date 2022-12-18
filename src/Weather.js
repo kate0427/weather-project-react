@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
-import Date from "./Date.js";
+import FormattedDate from "./FormattedDate";
 
 export default function Weather(props) {
   const apiKey = "e80f735c22f9cc78cdfe65b74bebba0a";
@@ -19,7 +19,6 @@ export default function Weather(props) {
       humidity: response.data.main.humidity,
       description: response.data.weather[0].description,
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
-      ready: true,
     });
   }
 
@@ -65,10 +64,9 @@ export default function Weather(props) {
               </button>
             </div>
             <div className="col-md mt-2 text-center dateTime">
-              <h2 className="date">
-                <Date date={weather.date} />
+              <h2 className="date p-4">
+                <FormattedDate date={weather.date} />
               </h2>
-              <h3 className="time">15:00</h3>
             </div>
           </div>
         </div>

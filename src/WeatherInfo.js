@@ -1,5 +1,6 @@
 import React from "react";
 import WeatherIcon from "./WeatherIcon";
+import WeatherTemp from "./WeatherTemp";
 import "./Weather.css";
 
 export default function WeatherInfo(props) {
@@ -15,7 +16,7 @@ export default function WeatherInfo(props) {
               <p className="card-text weatherDetails">
                 Humidity:<span> {props.weatherInfo.humidity}%</span>
                 <br />
-                Wind:<span> {props.weatherInfo.wind}</span>{" "}
+                Wind:<span> {Math.round(props.weatherInfo.wind)}</span>{" "}
                 <span className="windUnit">km/h</span>
               </p>
             </div>
@@ -26,20 +27,10 @@ export default function WeatherInfo(props) {
               <p className="skyDescription">{props.weatherInfo.description}</p>
             </div>
             <div className="col-md-4 text-center">
-              <p className="tempBox">
-                <span className="temperature">
-                  {Math.round(props.weatherInfo.temperature)}
-                </span>
-                <span className="unit"> ℃ | ℉</span>
-              </p>
-              <p className="feelsLikeTemperature">
-                *feels like:{" "}
-                <span>
-                  {Math.round(props.weatherInfo.feelsLikeTemperature)}
-                </span>
-                <span className="unitFeelsLike">℃ |</span>
-                <span> ℉</span>
-              </p>
+              <WeatherTemp
+                celsius={props.weatherInfo.temperature}
+                celsiusFeelsLike={props.weatherInfo.feelsLikeTemperature}
+              />
             </div>
           </div>
         </div>

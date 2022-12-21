@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import WeatherIcon from "./WeatherIcon";
 import "./Weather.css";
 
 export default function WeatherInfo(props) {
@@ -19,11 +20,9 @@ export default function WeatherInfo(props) {
               </p>
             </div>
             <div className="col-md-4 text-center">
-              <img
-                src={props.weatherInfo.icon}
-                className="mainWeatherImg"
-                alt={props.weatherInfo.description}
-              />
+              <div className="mt-3">
+                <WeatherIcon code={props.weatherInfo.icon} />
+              </div>
               <p className="skyDescription">{props.weatherInfo.description}</p>
             </div>
             <div className="col-md-4 text-center">

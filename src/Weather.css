@@ -50,10 +50,7 @@
   margin: 20px 0 0 20px;
   opacity: 0.8;
 }
-.Weather .mainWeatherImg {
-  margin-top: 5%;
-  width: 120px;
-}
+
 .Weather .skyDescription {
   font-size: 20px;
   margin-top: 10px;

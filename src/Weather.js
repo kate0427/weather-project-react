@@ -3,6 +3,7 @@ import axios from "axios";
 import "./Weather.css";
 import FormattedDate from "./FormattedDate";
 import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast";
 import ReactLoading from "react-loading";
 
 export default function Weather(props) {
@@ -78,20 +79,7 @@ export default function Weather(props) {
           </div>
         </div>
         <WeatherInfo weatherInfo={weather} />
-        <div className="card mx-auto daysWeatherCard" styles="width: 80%">
-          <div className="container text-center">
-            <div className="row">
-              <div className="col-md-4">
-                <div className="daysWeatherDate">Mon</div>
-                <img className="daysImg" alt="..." src="..." id="..." />
-                <p className="daysTemperature">
-                  <span className="daysTempMax">12 | </span>
-                  <span className="daysTempMin">12</span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <WeatherForecast />
         <div className="container text-center otherCities" styles="width: 80%">
           <div className="row">
             <div className="col-lg-2">

@@ -66,22 +66,6 @@
   font-size: 17px;
   opacity: 0.8;
 }
-.Weather .daysWeatherCard {
-  border-color: #f6eb9a;
-  padding: 1% 0 1% 0;
-  font-size: 20px;
-}
-.Weather .daysImg {
-  margin-bottom: 5%;
-  width: 80px;
-}
-.Weather .daysTempMin,
-.daysWeatherDate {
-  opacity: 0.8;
-}
-.Weather .daysTemperature {
-  margin-bottom: 0;
-}
 
 .Weather .otherCities {
   border: 1px solid #f6eb9a;

@@ -1,0 +1,15 @@
+.daysWeatherCard {
+  border-color: #f6eb9a !important;
+  padding: 1% 0 1% 0;
+  font-size: 20px;
+  text-align: center;
+}
+.daysWeatherDate {
+  margin-bottom: 5px;
+}
+.daysTempMin {
+  opacity: 0.8;
+}
+.daysTemperature {
+  margin-bottom: 0;
+}

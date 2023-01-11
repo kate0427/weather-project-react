@@ -25,7 +25,6 @@ export default function WeatherForecast(props) {
   }
 
   if (loaded) {
-    console.log(forecast);
     return (
       <div className="daysWeatherCard card mx-auto " styles="width: 80%">
         <div className="container">

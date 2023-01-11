@@ -81,14 +81,8 @@ export default function Weather(props) {
         </div>
         <WeatherInfo weatherInfo={weather} />
         <WeatherForecast coordinates={weather.coordinates} />
-        <div className="container text-center otherCities" styles="width: 80%">
-          <div className="row">
-            <div className="col-lg-2">
-              <a href="/">Lisbon</a>
-            </div>
-          </div>
-        </div>
-        <footer className="myLink">
+
+        <footer className="myLink mt-4">
           This project was coded by Kateryna Andriichuk. It is{" "}
           <a
             href="https://github.com/kate0427/weather-react"

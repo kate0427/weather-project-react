@@ -67,13 +67,6 @@
   opacity: 0.8;
 }
 
-.Weather .otherCities {
-  border: 1px solid #f6eb9a;
-  border-radius: 5px;
-  font-size: 20px;
-  margin: 3% auto;
-  padding: 1% 0 1% 0;
-}
 .Weather a {
   text-decoration: none;
   color: #443eb4;

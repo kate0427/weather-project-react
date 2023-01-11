@@ -7,7 +7,7 @@ import WeatherForecast from "./WeatherForecast";
 import ReactLoading from "react-loading";
 
 export default function Weather(props) {
-  const apiKey = "e80f735c22f9cc78cdfe65b74bebba0a";
+  const apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
   const [city, setCity] = useState(props.city);
   const [weather, setWeather] = useState({ ready: false });
 

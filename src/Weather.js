@@ -89,14 +89,22 @@ export default function Weather(props) {
           </div>
         </div>
         <footer className="myLink">
+          This project was coded by Kateryna Andriichuk. It is{" "}
           <a
             href="https://github.com/kate0427/weather-react"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Open-source code
+            open-sourced on GitHub
+          </a>{" "}
+          and{" "}
+          <a
+            href="https://weather-react-kate.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            hosted on Netlify
           </a>
-          <span> by Kateryna Andriichuk</span>
         </footer>
       </div>
     );

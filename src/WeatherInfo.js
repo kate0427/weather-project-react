@@ -13,7 +13,7 @@ export default function WeatherInfo(props) {
               <h1 className="card-title currentCity">
                 {props.weatherInfo.cityName}
               </h1>
-              <p className="card-text weatherDetails">
+              <p className="card-text weatherDetails float-right">
                 Humidity:<span> {props.weatherInfo.humidity}%</span>
                 <br />
                 Wind:<span> {Math.round(props.weatherInfo.wind)}</span>{" "}
